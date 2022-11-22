@@ -5,11 +5,11 @@
 class Kadiog < Formula
   desc ""
   homepage "https://github.com/akifkadioglu/kadiog-cli"
-  version "0.1.3"
+  version "0.0.1"
 
   on_macos do
-    url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.1.3/kadiog-cli_0.1.3_darwin_all.tar.gz"
-    sha256 "7441d497e5c11f320da3426983a813bd139680544787b0979a468f678c956109"
+    url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.0.1/kadiog-cli_0.0.1_darwin_all.tar.gz"
+    sha256 "5056d4f46c420618fdd2eb665540ca55611239bbde794528f946f2400cf200d9"
 
     def install
       bin.install "kadiog-cli"
@@ -17,17 +17,17 @@ class Kadiog < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.1.3/kadiog-cli_0.1.3_linux_arm64.tar.gz"
-      sha256 "b1b504ffdb85f4c1a396b1edcaacef5c4fb51dd59c7e61f708b3ed8c75005864"
+    if Hardware::CPU.intel?
+      url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.0.1/kadiog-cli_0.0.1_linux_amd64.tar.gz"
+      sha256 "ef9a8068eb9ef4720a230366867f8b5767d8778d318a7e3743b2b05e7d7abe6c"
 
       def install
         bin.install "kadiog"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.1.3/kadiog-cli_0.1.3_linux_amd64.tar.gz"
-      sha256 "18457f89d7ab4f1810e1211b0352cbc54b87f9167031df1d2dbfa52f2a56bdcb"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/akifkadioglu/kadiog-cli/releases/download/v0.0.1/kadiog-cli_0.0.1_linux_arm64.tar.gz"
+      sha256 "385ea7339af36743b8f9c29d3078fdf9989a1a7750cad0b6758c0864827d7386"
 
       def install
         bin.install "kadiog"
