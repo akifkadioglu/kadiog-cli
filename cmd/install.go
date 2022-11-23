@@ -4,6 +4,7 @@ Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+	"os"
 	"os/exec"
 
 	"github.com/fatih/color"
@@ -21,11 +22,18 @@ var installCmd = &cobra.Command{
 		if name == "" {
 			name = "setup"
 		}
-		run := exec.Command("git", "clone", "https://github.com/akifkadioglu/go-echo-gorm-mysql-setup.git", name)
+		run := exec.Command("git", "clone", "https://github.com/akifkadioglu/go-echo-gorm-mysql-setup.git", name, "--depth", "1")
+
 		if err := run.Run(); err != nil {
 			color.Red("Something went wrong! try again..")
 		} else {
-			color.Cyan("the "+name + " installed")
+
+			if err := os.RemoveAll("./" + name + "/.git"); err != nil {
+				color.Red("Something went wrong! try again..")
+				os.RemoveAll("./" + name)
+			}
+
+			color.Cyan("the " + name + " installed")
 		}
 
 	},
