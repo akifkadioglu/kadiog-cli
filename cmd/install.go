@@ -25,7 +25,7 @@ var installCmd = &cobra.Command{
 		if err := run.Run(); err != nil {
 			color.Red("Something went wrong! try again..")
 		} else {
-			color.Cyan("installed")
+			color.Cyan("the "+name + " installed")
 		}
 
 	},
